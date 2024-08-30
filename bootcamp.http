@@ -1,0 +1,35 @@
+GET http://localhost:3001/api/word_game?sentence=my name is grace HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:3001/api/phonebill/total HTTP/1.1
+content-type: application/json
+
+{
+    "bill": "call, sms, sms, sms, call"
+}
+
+###
+
+GET http://localhost:3001/api/phonebill/prices HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:3001/api/phonebill/price
+content-type: application/json
+
+{
+    "type": "call",
+    "price": 3.89
+}
+
+###
+POST http://localhost:3001/api/enough
+content-type: application/json
+
+{
+    "usage": "call,sms",
+    "available": 10
+}

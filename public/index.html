@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp API</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="bootcamp.js"></script>
+</head>
+
+<body x-data="bootCamp">
+    <h1 style="text-align: center;">Bootcamp APIs</h1>
+    <div class="border">
+        <h2>Word game</h2>
+        <h4><i>Analyse sentences to find the longest word, shortest word and the sum.</i></h4>
+        Enter sentence: <input type="text" x-model="sentence" class="button">
+        <button @click="wordGame" class="color-button">Analyse</button>
+
+        <div x-show="showResults" x-transition>
+            <p>Longest word: <span x-text="longestWord"></span></p>
+            <p>Shortest word: <span x-text="shortestWord"></span></p>
+            <p>Sum: <span x-text="sum"></span></p>
+        </div>
+    </div>
+
+    <div class="border">
+        <h2>Total phone bill</h2>
+        <div>
+            <h4><i>Show the initial prices of calls and SMSs.</i></h4>
+            <button @click="showCallPrice" class="color-button">Call</button>
+            <button @click="showSmsPrice" class="color-button">SMS</button>
+
+            <div x-show="showCall" x-transition>
+                <p>Call price: R<span x-text="callPrice"></span></p>
+            </div>
+
+            <div x-show="showSms" x-transition>
+                <p>SMS price: R<span x-text="smsPrice"></span></p>
+            </div>
+        </div>
+
+        <div>
+            <h4><i>Calculate the total bill for calls and SMSs.</i></h4>
+            Bill: <input type="text" x-model="bill" placeholder="Enter as: call, sms" class="button">
+            <button @click="calculateTotal" class="color-button">Calculate total</button>
+
+            <div x-show="showBillTotal" x-transition>
+                <p>Total: <span x-text="totalBill"></span></p>
+            </div>
+        </div>
+
+        <div>
+            <h4><i>Set a new price for calls and SMSs.</i></h4>
+            Type: <input type="text" x-model="type" placeholder="Enter as: 'call' or 'sms'" class="button">
+            New price: <input type="text" x-model="newPrice" placeholder="Enter amount" class="button">
+            <button @click="setNewPrice" class="color-button">Set Price</button>
+
+            <div x-show="showSetPriceMessage" x-transition>
+                <!-- <p x-text="setPriceStatus"></p> -->
+                <p x-text="setPriceMessage"></p>
+            </div>
+
+            <button @click="showUpdatedCallPrice" class="color-button">New Call Price</button>
+            <button @click="showUpdatedSmsPrice" class="color-button">New SMS Price</button>
+
+            <div x-show="showNewCallPrice" x-transition>
+                <p>New call price: R<span x-text="newCallPrice"></span></p>
+            </div>
+
+            <div x-show="showNewSmsPrice" x-transition>
+                <p>New SMS price: R<span x-text="newSmsPrice"></span></p>
+            </div>
+
+            <!-- <button @click="resetPrices" class="color-button">Reset Prices</button> -->
+        </div>
+    </div>
+
+    <div class="border">
+        <h2>Enough Airtime?</h2>
+        <h4><i>Check if you have enough airtime for your projected usage.</i></h4>
+        <ul>
+            <li>Call: R1.88</li>
+            <li>Data: R12.00</li>
+            <li>SMS: R0.75</li>
+        </ul>
+        Projected usage:
+        <input type="text" x-model="projectedUsage" placeholder="Enter as: call,sms,data" class="button">
+        Available airtime:
+        <input type="number" x-model="availableAirtime" placeholder="Enter amount" class="button">
+        <button @click="checkAirtime" class="color-button">Check</button>
+
+        <div x-show="showAirtimeResult" x-transition>
+            <p>Airtime left: <span x-text="airtimeLeft"></span></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
